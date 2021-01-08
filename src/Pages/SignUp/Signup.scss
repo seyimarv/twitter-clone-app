@@ -1,0 +1,97 @@
+@import '../../Components/Breakpoints/abstracts/mixins' ;
+
+.SignUpPage {
+    background: rgba(143, 136, 136, 0.6);
+    height: 100vh;
+    padding-top: 20px !important;
+    @include respond(tab-land)  {
+     
+        padding-top: 10px !important;
+    }
+    @include respond(phone)  {
+         background: white;
+         margin-top: -10px !important;
+     }
+     @include respond(tab-port)  {
+        background: white;
+        padding-top: 0px !important;
+    }
+  
+    .signupHeader {
+        display: flex;
+
+        .signupTwitterIcon {
+            flex: 0.95;
+            margin-left: 40px;
+
+            @include respond(phone)  {
+            
+                margin-left: 50px !important;
+            }
+        }
+        .SignupButton {
+            flex: 0.05;
+            margin-top: -2px !important;
+ 
+
+            @include respond(phone)  {
+            
+             
+            }
+            
+        }
+        @include respond(phone)  {
+           
+            margin-bottom: 10px !important;
+        }
+    }
+}
+.error {
+    color: red;
+    font-size: 10px;
+    margin-top: -15px !important;
+}
+
+.SignupContents {
+    background: white;
+    margin: 0px 350px;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow:  0.5rem 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.02);
+
+    h2 {
+        font-size: 25px;
+        padding: 10px 0px;
+     
+    }
+    h3 {
+        font-size: 15px;
+    }
+    p {
+        color: rgba($color: #9ab0c5, $alpha: 1.0);
+    }
+    @include respond(tab-land)  {
+       
+        margin: 10px 240px;
+        box-shadow:  none;
+    }
+   
+     @include respond(tab-port)  {
+        border: none;
+        margin: 0px 0px;
+        box-shadow:  none;
+     }
+     @include respond(phone)  {
+        border: none;
+        margin: 0px 0px;
+        box-shadow:  none;
+     }
+}
+
+
+.signupTwitterIcon {
+    display: flex;
+    color: var(--twitter-color);
+    font-size: 30px !important;
+}

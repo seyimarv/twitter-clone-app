@@ -1,0 +1,52 @@
+@import '../../Components/Breakpoints/abstracts/mixins';
+.comment-post {
+    margin: auto;
+
+    .post-avatar {
+        margin: 0px 5px;
+    }
+}
+
+.post-body {
+   width: fit-content;
+
+   
+   .post-header-text {
+       display: flex;
+       h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+
+        @include respond(phone) {
+            font-size: 15px;
+        }
+       }
+
+       span {
+           color: rgb(172, 166, 166); 
+           font-size: 14px;
+
+           @include respond(phone) {
+            font-size: 12px;
+        }
+       }
+   }
+   .post-contents {
+    h6 {
+        color: rgb(172, 166, 166);
+      
+        span {
+            color: rgb(0, 119, 255) !important;
+            margin: 0px 5px;
+        }
+    }
+    p {
+        overflow-wrap: break-word;
+        margin-bottom: 10px;
+        font-size: 15px;
+       
+       
+    
+    }
+   }
+}

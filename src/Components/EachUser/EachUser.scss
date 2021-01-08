@@ -1,0 +1,52 @@
+@import '../Breakpoints/abstracts/mixins';
+.eachUser {
+   display: flex;
+   border: 1px solid var(--twitter-background);
+   padding: 10px;
+   
+   .eachUserName {
+       flex: 0.96;
+       margin: 0px 10px;
+
+     
+       
+       h4 {
+           font-size: 17px;
+
+           @include respond(phone) {
+               width: 120px;
+               overflow: hidden;
+               white-space: nowrap; 
+               text-overflow: ellipsis; 
+           }
+
+
+       }
+
+       p {
+           margin-top: -10px !important;
+           color: rgb(180, 176, 176);
+           font-size: 15px;
+       }
+   }
+   .eachUserButton {
+       margin: 5px;
+       background-color: white !important;
+       border: 1px solid var(--twitter-color) !important;
+       border-radius: 20px !important;
+     padding: 5px !important;
+       outline: none !important;
+       
+       @include respond(phone) {
+           padding: 5px !important;
+           margin: 0px !important;
+           font-size: 12px;
+       }
+
+       &:hover {
+           background-color: rgb(229, 229, 241) !important;
+       }
+
+
+   }
+}

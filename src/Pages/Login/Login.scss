@@ -1,0 +1,21 @@
+@import '../../Components/Breakpoints/abstracts/mixins' ;
+
+.loginPage {
+
+    width: 50%;
+    margin: auto;
+
+    @include respond(tab-port)  {
+        width: 80%;
+    }
+    @include respond(phone)  {
+        width: 90%;
+    }
+    h1 {
+        font-size: 22px;
+        padding: 20px;
+    }
+    p {
+        color: var(--twitter-color);
+    }
+}

@@ -1,0 +1,76 @@
+@import '../Breakpoints/abstracts/mixins';
+.each-post-page::-webkit-scrollbar {
+    display: none;
+
+  }
+
+.each-post-page {
+    border-right: 1px solid var(--twitter-background);
+    border-left: 1px solid var(--twitter-background);
+    overflow-y: scroll;
+    padding-bottom: 10px;
+    -ms-overflow-style: none;
+
+    @include respond(phone) {
+        height: 100vh;
+       }
+}
+    .each-post-page-container {
+        padding: 10px 20px;
+    }
+    .each-post-page-header {
+        .postPageAvatar  {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 40px !important;
+
+            
+         }
+
+        h4 {
+            
+            font-size: 20px;
+             
+                overflow: hidden;
+                white-space: nowrap; 
+                text-overflow: ellipsis;
+                
+                @include respond(phone) {
+                    max-width: 150px;
+                }
+        }
+        span {
+            color: rgb(199, 193, 193);
+        }
+     
+    }
+    p {
+        font-size: 20px;
+        overflow-wrap: break-word;
+        margin-right: 10px;
+    }
+    .each-post-page-stats {
+        border-top: 1px solid var(--twitter-background);
+        border-bottom: 1px solid var(--twitter-background);
+        height: 40px;
+
+        span {
+            color: rgb(199, 193, 193);
+        }
+
+    }
+   .each-post-page-footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 50px;
+    width: 75%;
+
+    .Retweeted {
+        color: green;
+    }
+
+    .liked {
+        color: red !important;
+    }
+  
+   }

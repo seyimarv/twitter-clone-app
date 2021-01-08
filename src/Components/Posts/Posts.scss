@@ -1,0 +1,151 @@
+@import '../Breakpoints/abstracts/mixins';
+.posts {
+    background-color: white;
+}
+
+.post {
+    display: flex;
+    border-bottom: 1px solid var(--twitter-background);
+    padding-bottom: 10px;
+  
+  
+    .postAvatar {
+        padding: 10px 15px;
+        width: 12%;
+
+        @include respond(phone) {
+            width: 20%;
+        }
+        .eachPostAvatar {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 40px !important;
+        }
+
+    }
+
+    .postBody {
+        width: fit-content;
+       padding: 15px 0px;
+     
+       width: 85%; 
+ 
+   
+
+       @include respond(phone) {
+           padding: 15px 5px;
+           width: 80%;
+       }
+       p {
+        margin-right: 20px;
+        overflow-wrap: break-word;
+        margin-bottom: 0px;
+        font-size: 15px;
+   
+    }
+        
+        img {
+            border-radius: 20px;
+            width: 100%;
+        }
+     
+        .postHeader {
+            display: flex;
+
+            span {
+                .msvg {
+                   margin-left: 90px !important;
+                   color: rgb(173, 169, 169);
+                   
+                   &:hover {
+                       background-color: rgb(224, 224, 253);
+                       border-radius: 20px;
+                       border: 1px solid rgb(233, 233, 250)
+                   }
+                    
+                }
+            }
+        }
+        
+        .postHeaderText {
+            width: 80%;
+
+            a {
+                color: black;
+            
+        
+            
+            }
+
+          
+            @include respond (phone) {
+                max-width: 50%;
+            }
+          
+            h3 {
+                font-size: 15px;
+                margin-bottom: 5px;
+                overflow: hidden;
+                white-space: nowrap; 
+                text-overflow: ellipsis; 
+          
+              
+                @include respond (phone) {
+                    max-width: 120px;
+                }
+              
+            }
+           
+        }
+        .postHeaderSub {
+            font-weight: 800;
+            font-size: 12px;
+            color: grey
+        }
+        .postBadge {
+            font-size: 14px !important;
+            color: var(--twitter-color)
+        }
+        
+     
+    }
+    .linktoPostpage {
+    a {
+        color: black;
+        text-decoration: none;
+
+    
+    }
+}
+  
+   
+    .postFooter {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0px;
+        width: 75%;
+
+        .retweeted {
+            color: green !important;
+        }
+       
+        .liked {
+          color: red;
+
+            .MuiSvgIcon-root {
+                fill: rgb(196, 26, 26) !important;
+            }
+        }
+        @include respond (phone) {
+            width: 80%;
+        }
+    }
+  
+    @include respond(phone) {
+      
+       
+        
+    }
+}
+
+    

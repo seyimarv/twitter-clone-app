@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+@import '../Breakpoints/abstracts/mixins';
+
+.profile::-webkit-scrollbar {
+    display: none;
+
+  }
+.profile {
+    border-left: 1px solid var(--twitter-background);
+    border-right: 1px solid var(--twitter-background);
+    padding-bottom: 150px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+
+    .profilebackground {
+        margin: 0px -15px !important;
+        height: 200px;
+        border-bottom: 1px solid var(--twitter-background);
+        background-color: rgba(29,161,242,0.6);;
+        background-image: url('../../Pages//SignInAndSignUp/twitter.svg') ;
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 1000px;
+
+        h3 {
+           text-align: center;
+           padding-top: 50px;
+           font-family: 'Hanalei Fill', cursive;
+           color: whitesmoke;
+          
+        }
+    }
+    .profilePicture {
+    
+        
+    
+    }
+    .profileDetails {
+        
+        h2 {
+            font-size: 20px;
+        }
+        h4{
+            font-size: 18px;
+            color: grey;
+        }
+    }
+    .profilePostHeader {
+        color: rgba(29,161,242,0.8);
+        text-align: center;
+        border-bottom: 1px solid var(--twitter-background);
+        margin: 0px -15px !important;
+    }
+    @include respond(phone) {
+        height: 100vh;
+       }
+}

@@ -1,0 +1,77 @@
+@import '../Breakpoints/abstracts/mixins';
+
+
+.feed::-webkit-scrollbar {
+    display: none;
+
+  }
+.feed {
+    border-left: 1px solid var(--twitter-background);
+    border-right: 1px solid var(--twitter-background);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+     .feedAvatar{
+         display: none;
+        
+          @include respond(phone) {
+            width: 31px;
+            height: 31px;
+            display: flex;
+            margin:5px 0px;
+        
+         }
+      
+     }
+    h2 {
+        font-size: 20px;
+        font-weight: 800;
+       
+        @include respond(phone) {
+            margin: 8px;
+            margin-left: 30px;
+            font-weight: 500;
+        
+         }
+    }
+
+    .feedheader {
+         
+       
+        background-color: white;
+        border: 1px solid red;
+        padding: 15px 20px;
+
+        @include respond(phone) {
+        
+           top: 0px;
+           display: flex;
+           margin: 0px -15px !important;
+           border: none;
+           padding: 5px 20px;
+           border-bottom: 1px solid var(--twitter-background);
+         }
+         @include respond(phone) {
+        
+          
+       }
+      
+    }
+    @include respond(phone) {
+      
+      margin: 5px 0px;
+      border: none;
+         
+    }
+    .feedTweetBox {
+      border-bottom: 10px solid var(--twitter-background);
+      @include respond(phone) {
+        display: none;
+           
+      }
+    }
+    @include respond(phone) {
+     height: 100vh;
+    }
+    
+    
+}

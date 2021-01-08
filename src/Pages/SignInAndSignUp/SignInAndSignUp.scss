@@ -1,0 +1,72 @@
+@import '../../Components/Breakpoints/abstracts/mixins' ;
+.SignLeftSide {
+    background-color: rgba(29,161,242,0.6);;
+    padding: 150px 150px;
+    background-image: url('./twitter.svg') ;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 1000px;
+    
+        h3 {
+           
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
+            margin: 50px 0px;
+
+        }
+    
+        @include respond(phone)  {
+            padding: 20px 20px;
+        }
+    
+    
+}
+.SignRightSide {
+    padding: 120px 150px;
+    
+    .SignTwitterIcon {
+        color: var(--twitter-color);
+        font-size: 50px !important;
+        
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 30px;
+       
+    }
+    h6 {
+        margin-top: 50px;
+    }
+    @include respond(phone)  {
+        padding: 20px 20px;
+    }
+
+   
+}
+.SignButton {
+    border: none !important;
+    color:black !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    height: 40px !important;
+    margin-top: 20px !important;
+    border-radius: 30px !important;
+      
+
+    &:focus {
+        outline: none;
+    }
+    }
+   .SignupButton {
+    background-color: var(--twitter-color) !important;
+    color: white !important;
+   } 
+   .LoginButton {
+       border: 1px solid  var(--twitter-color) !important;
+       color: var(--twitter-color) !important;
+   }
+   @include respond(phone)  {
+    padding: 20px 20px;
+ }

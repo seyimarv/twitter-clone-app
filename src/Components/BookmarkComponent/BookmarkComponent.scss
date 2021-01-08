@@ -1,0 +1,25 @@
+
+
+.bookmarkComponent::-webkit-scrollbar {
+    display: none;
+
+  }
+
+.bookmarkComponent {
+    border-left: 1px solid var(--twitter-background);
+    border-right: 1px solid var(--twitter-background);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    height: 100vh;
+ 
+
+    h3 {
+        font-size: 20px;
+       
+    }
+
+    h1 {
+        font-size: 15px;
+        text-align: center;
+    }
+}

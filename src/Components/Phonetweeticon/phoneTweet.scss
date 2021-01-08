@@ -1,0 +1,37 @@
+
+    @import '../Breakpoints/abstracts/mixins';
+
+
+    .phoneTweet {
+      display: none;
+       
+        
+    
+        @include respond(phone) {
+            // display: flex;
+            // width: 100%;
+            // background-color: white;
+            // z-index: 100; 
+            // position: sticky !important;
+        
+            // border-top: 1px solid var(--twitter-background);
+            // justify-content: space-between;
+            // padding: 5px 20px;
+            right: 8px !important;
+            height: 60px;
+            width: 60px;
+            background-color: rgba(29,161,242,0.9);;
+            border-radius: 50%;
+            display: flex;
+         
+            background-image: url('../../Assets/Twitter_Logo_WhiteOnImage.svg');
+            background-position: center;
+            position: fixed;
+            bottom: 100px;
+       
+            background-repeat: no-repeat;
+            background-size: 60px;
+        
+        }
+      
+    }

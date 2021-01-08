@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {  positions, Provider as AlertProvider } from 'react-alert'
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import AlertTemplate from 'react-alert-template-basic'
 import reportWebVitals from './reportWebVitals';
+import { UserContextProvider } from './Context/UserContextProvider';
+
+const options = {
+  timeout: 5000,
+  position: positions.TOP_CENTER
+};
 
 ReactDOM.render(
-  <React.StrictMode>
+ 
+  <BrowserRouter>
+   <AlertProvider template={AlertTemplate} {...options}>
+    <UserContextProvider>
     <App />
-  </React.StrictMode>,
+    </UserContextProvider>
+    </AlertProvider>
+    </BrowserRouter>
+,
   document.getElementById('root')
 );
 

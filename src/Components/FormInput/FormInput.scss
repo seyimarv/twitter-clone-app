@@ -1,0 +1,32 @@
+.inputGroup {
+    position: relative;
+    .formInput {
+    background: none;
+    background-color: white;
+    color: grey;
+    font-size: 18px;
+    padding: 20px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(194, 193, 193,0.9);
+    margin: 20px 0;
+
+    &.inputError {
+        border: 1px solid red;
+     
+    }
+
+    &:focus {
+         outline: none;
+        border: 2px solid rgba(29,161,242,1);
+    }
+    }
+    label {
+        position: absolute;
+        font-size: 15px;
+        color: rgba(194, 193, 193,0.9);
+        left: 5px;
+        top: 1px;
+    }
+}

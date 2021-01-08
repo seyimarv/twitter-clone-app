@@ -1,0 +1,19 @@
+.searchComponent::-webkit-scrollbar {
+    display: none;
+
+  }
+
+.searchComponent {
+    border-left: 1px solid var(--twitter-background);
+    border-right: 1px solid var(--twitter-background);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+
+
+
+
+    h1 {
+        font-size: 15px;
+        text-align: center;
+    }
+}
