@@ -2,6 +2,7 @@
   "name": "twitter-clone",
   "version": "0.1.0",
   "private": true,
+ 
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
@@ -13,6 +14,7 @@
     "firebase": "^8.2.1",
     "firebase-tools": "^9.1.0",
     "formik": "^2.2.6",
+    "node-sass": "4.14.1",
     "react": "^17.0.1",
     "react-alert": "^7.0.2",
     "react-alert-template-basic": "^1.0.0",
