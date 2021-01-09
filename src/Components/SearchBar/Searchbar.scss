@@ -1,12 +1,19 @@
 .searchInputContainer {
    display: flex;
    border: 1px solid var(--twitter-background);
-   position: sticky;
+   position: sticky !important;
    z-index: 100;
    top: 0px;
    background-color: white;
+
+   .backButton {
+    margin: 20px 10px;
+    color: var(--twitter-color);
+}
     
 }
+
+
 
 .searchInput {  
     display: flex;
@@ -14,10 +21,11 @@
     width: 90%;
     border-radius: 20px;
     margin: 10px;
-    padding: 5px 20px;
+    padding: 10px 20px;
 
     .searchIcon {
         color: grey;
+    
     }
 
     input {
@@ -25,6 +33,7 @@
         background-color: var(--twitter-background);
         width: 100%;
        outline: none !important;
+       margin: 0px 15px;
 
     }
 }

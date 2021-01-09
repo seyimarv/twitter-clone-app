@@ -37,7 +37,7 @@ const Bookmarkpage = (props) => {
            <Sidebar  path='Bookmark' handleOpen={handleOpen}/>
           </div>
           <div className='col-lg-5 col-xs-12 col-sm-8 px-0 col-md-8'>
-          <Header presentPage='Bookmark' Avatar={Avatar}/>
+          <Header presentPage='Bookmark' Avatar={Avatar} history={props.history}/>
          <Bookmark />
               
           </div>

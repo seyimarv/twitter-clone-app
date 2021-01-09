@@ -12,11 +12,13 @@ import { useGetUserData, useFetchPostCommments, useFetchLike, useFetchPostRetwee
 import Database from '../../Firebase/Firebase'
 import { UserContext } from '../../Context/UserContextProvider'
 import ClickAway from './PostDropdown'
+import { useAlert } from "react-alert";
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, path}, ref) => {
   const {user} = useContext(UserContext)
   const currentUser = user
+  const Alert = useAlert();
   // fetching comments for each post
 const comments = useFetchPostCommments(Database.collection('comments'), id)
 
@@ -58,7 +60,12 @@ const handleClickAway = () => {
   setOpenDropdown(false);
 };
 
+const RetweetClick = async () => {
+  await 
+  handleRetweetClick(EachRetweet, id, currentUser)
+  Alert.success('Retweet successful!')
 
+}
 
 
   
@@ -71,7 +78,7 @@ const handleClickAway = () => {
      <div className='row post'>
     
         <div className="postAvatar">
-        <Avatar name={postUser.name} size='40' className='eachPostAvatar' round={true} 
+        <Avatar name={postUser.name} size='45' className='eachPostAvatar' round={true} 
         color={Avatar.getRandomColor('sitebase', ['red'])} />
         </div>
         <div className='postBody'>
@@ -165,7 +172,10 @@ const handleClickAway = () => {
               onClose={handleClose} location={location}/> 
            </Modal>
            <div className={` ${EachRetweet ? 'retweeted' : ''}`}>
-            <RepeatIcon fontSize='small' onClick={() => handleRetweetClick(EachRetweet, id, currentUser)} />
+            <RepeatIcon fontSize='small' onClick={() => 
+            RetweetClick()}
+                   
+                 />
             { Retweets.length > 0 ? 
               <span className='pl-1'>
               {Retweets.length}

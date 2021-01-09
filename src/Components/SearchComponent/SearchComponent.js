@@ -9,7 +9,7 @@ import './SearchComponent.scss'
 
 
 
-const SearchComponents = () => {
+const SearchComponents = ({history}) => {
     const [searchField, setSearchField] = useState('')
     const [posts, setPosts] = useState([])
   const [users, setUsers] = useState([])
@@ -76,7 +76,9 @@ const SearchComponents = () => {
     return (
       <div className=' searchComponent'>
              <SearchBar onSearchChange={onSearchChange}
-             onSearchSubmit={onSearchSubmit}/>
+             onSearchSubmit={onSearchSubmit}
+               history={history}
+             />
               <h4 className='mx-2'>People</h4>
         { users.length  ?
             <div>

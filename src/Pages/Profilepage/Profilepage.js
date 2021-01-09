@@ -39,11 +39,11 @@ const Profilepage = (props) => {
        
             <div className='container-fluid '>
             <div className='row profilePage'>
-                <div className='col-lg-3 col-md-12'>
+                <div className='col-lg-3 col-md-4 col-sm-4'>
                 <Sidebar path='Profile' handleOpen={handleOpen}/>
                 </div>
-                <div className='col-lg-5 col-sm-12 col-md-12 px-0'>
-                <Header presentPage={userProfile.name} Avatar={Avatar} path='Profile'/>
+                <div className='col-lg-5  col-sm-8 col-md-8  px-0'>
+                <Header presentPage={userProfile.name} Avatar={Avatar} path='Profile' history={props.history}/>
                 <Profile  userProfile={userProfile} userPosts={userPosts} 
                 location={props.location.pathname}/>
                 </div>

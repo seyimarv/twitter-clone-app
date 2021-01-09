@@ -53,7 +53,7 @@ const {Retweets, EachRetweet} = retweetState
            <Sidebar  path='home' handleOpen={handleOpen}/>
           </div>
           <div className='col-lg-5 col-xs-12 col-sm-8 px-0 col-md-8 homeField'>
-          <Header presentPage='Tweet' path='tweet' className=''/>
+          <Header presentPage='Tweet' path='tweet' className='' history={props.history}/>
           <EachPostPage name={name} comments={comments} 
           userName={userName}
           Likes={Likes}

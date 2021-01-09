@@ -5,13 +5,15 @@ import {  positions, Provider as AlertProvider } from 'react-alert'
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import AlertTemplate from 'react-alert-template-basic'
+import AlertTemplate from './Components/AlertTemplate/AlertTemplate'
 import reportWebVitals from './reportWebVitals';
 import { UserContextProvider } from './Context/UserContextProvider';
 
 const options = {
   timeout: 5000,
-  position: positions.TOP_CENTER
+  position: positions.TOP_CENTER,
+
+
 };
 
 ReactDOM.render(

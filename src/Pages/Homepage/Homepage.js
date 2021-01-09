@@ -44,7 +44,7 @@ const Homepage = (props) => {
            <Sidebar  path='home' handleOpen={handleOpen}/>
           </div>
           <div className='col-lg-5 col-xs-12 col-sm-8 px-0 col-md-8 homeField'>
-          <Header presentPage='Home' Avatar={Avatar} path='home' user={user}/>
+          <Header presentPage='Home' Avatar={Avatar} path='home' user={user} history={props.history}/>
           { users.length > 0 ?
               <Feed user={user} users={users} posts={posts}/>
               : <Loading />

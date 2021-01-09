@@ -45,7 +45,7 @@ const SearchPage = (props) => {
           </div>
           <div className='col-lg-5 col-xs-12 col-sm-8 px-0 col-md-8'>
        
-            <SearchComponents users={users}/>
+            <SearchComponents users={users} history={props.history}/>
             
               
           </div>

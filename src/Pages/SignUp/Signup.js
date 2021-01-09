@@ -14,6 +14,9 @@ const Signup = () => {
     const [formState1, setForm] = useState(true)
     const formInitialValues = { name: '', email: '', dateOfBirth: '', userName: '', password: ''}
     
+
+
+
     const setFormToSecond = () => {
         setForm(!formState1)
     }
@@ -50,18 +53,14 @@ const Signup = () => {
 
                 })}
                 onSubmit={async (values, { setSubmitting, resetForm }) => {
-                // setTimeout(() => {
-                //    
-                //     console.log(values);
-                //     resetForm()
-                 
-                // });
+               const { userName, dateOfBirth, name, email, password} = values 
                 try {
-                    const { userName, dateOfBirth, name} = values
-                    const { user } = await auth.createUserWithEmailAndPassword(values.email,values.password);
+                   
+                    const { user } = await 
+                    auth.createUserWithEmailAndPassword(email,password);
                     await createUserProfile(user,  {userName, dateOfBirth, name});
-                     setSubmitting(false);
                      resetForm()
+                     setSubmitting(false);
                     Alert.success('sign up was succesful!')
                   
                     } catch (error) {
@@ -122,7 +121,8 @@ const Signup = () => {
                      {formik.touched.password && formik.errors.password ? (
                         <div className='error'>{formik.errors.password}</div>
                     ) : null}
-                        <Button variant='outlined' className='SignupButton 
+                        <Button variant='outlined'  disabled={formik.isSubmitting} className='SignupButton 
+                       
                         SignButton mb-5' type='submit' fullWidth>Signup</Button>
                     </div>
                     

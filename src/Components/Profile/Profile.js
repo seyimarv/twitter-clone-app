@@ -15,9 +15,9 @@ const Profile = ({userProfile, userPosts}) => {
            <div className='profilebackground'>
              <h3>Marvie-twitter-clone</h3>
            </div>
-              <Avatar name={name} size='150'
+              <Avatar name={name} size='100'
                 style={{
-                   marginTop: "-80px",
+                   marginTop: "-60px",
                 }}
                round={true} 
               color={Avatar.getRandomColor('sitebase', ['red'])} /> 
