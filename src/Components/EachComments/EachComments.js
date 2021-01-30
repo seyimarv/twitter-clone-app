@@ -1,26 +1,48 @@
+import { Avatar } from '@material-ui/core'
 import React from 'react'
-import Avatar from 'react-avatar';
 import { useGetUserData } from '../Utils/Utils'
+import './EachComments.scss'
 
 const EachComment = ({id, commentText, commentImage, userId, commentUserId}) => {
    const commentUser = useGetUserData(commentUserId)
    console.log(commentUser)
     return (
-        <div>
-         <div className='each-post-page-container'>
+        <div className='container-fluid'>
+         {/* <div className='each-post-page-container'>
            <div className='each-post-page-header p-auto row'>
-           <Avatar name={commentUser.name} size='30' className='postPageAvatar' round={true}
-            color={Avatar.getRandomColor('sitebase', ['red'])} />
+           <Avatar src={commentUser.profilePicture} />
             <div className='mx-2'>
             <h4>{commentUser.name}</h4>
             <span>@{commentUser.userName}</span>
-            <p className='mx-2'>{commentText}</p>
+           <div className='text'>
+            <p>{commentText}</p>
+            </div>
+       
             </div>
           
         
            </div> 
-           <hr /> 
+      
+          </div> */}
+          <div className='row each-comment mx-1'>
+           <Avatar src={commentUser.profilePicture}/>
+           
+            <div className='mx-2 row comment-body' style={{
+                fontSize: '10px',
+                marginBottom: '2px',
+                overflow:' hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+                maxWidth: '50%'
+            }}>
+              <h4>{commentUser.name}</h4>
+              <span style={{
+                color: 'grey'
+              }}>@{commentUser.userName}</span>
+            </div>
+            <p className='mx-5'>{commentText}</p>
           </div>
+          <hr /> 
         </div>
     )
 }

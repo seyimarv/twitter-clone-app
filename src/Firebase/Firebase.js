@@ -17,7 +17,7 @@ const Database = firebaseApp.firestore()
 
 export const auth = firebase.auth();
 
-
+export const storage = firebase.storage()
 export const createUserProfile = async (userAuth, additionalData) => {
   if (!userAuth) return;
 

@@ -1,21 +1,21 @@
 import React, {useState, useContext} from 'react'
-import Avatar from 'react-avatar';
+
 import './EachPostPage.scss'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
 import RepeatIcon from '@material-ui/icons/Repeat'
 import  FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import { Modal } from '@material-ui/core';
+import { Avatar, Modal } from '@material-ui/core';
 import Comment from '../../Pages/Comment/Comment'
 import EachComment from '../EachComments/EachComments'
 import { handleLikeClick, handleRetweetClick} from "../Utils/Post.utils";
 import { UserContext } from '../../Context/UserContextProvider'
 
 
-const EachPostPage = ({comments, name, userName, text, image, userId, postId, postUserId, Likes, EachLike,
+const EachPostPage = ({comments, name, userName, text, image, userId, postId, profilePicture, Likes, EachLike,
      EachRetweet, Retweets}) => {
    const {user} = useContext(UserContext)
    const currentUser = user
- 
+   console.log(Retweets)
     
    const [open, setOpen] = useState(false);
 
@@ -32,15 +32,23 @@ const EachPostPage = ({comments, name, userName, text, image, userId, postId, po
         <div className='each-post-page'>
           <div className='each-post-page-container'>
            <div className='each-post-page-header p-auto row'>
-            <Avatar name={name} size='30' className='postPageAvatar' round={true} 
-            color={Avatar.getRandomColor('sitebase', ['red'])} />
+            <Avatar src={profilePicture} />
             <div className='mx-2'>
             <h4>{name}</h4>
             <span>@{userName}</span>
             </div>
            </div> 
-           <p className='pt-2'>{text}</p>  
-           <div className='each-post-page-stats mt-5'>
+           <p className='pt-1'>{text}</p>  
+           {
+             image ?
+             <img src={image} alt='post image' style={{
+            borderRadius: '10px',
+            width: '100%',
+            height: '250px',
+            margin: '10px'
+          }}/> : null
+           }
+           <div className='each-post-page-stats mt-2'>
                 {
                     comments.length > 0 ?
                     <span>{comments.length} comments</span> : null

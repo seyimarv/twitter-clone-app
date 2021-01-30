@@ -71,8 +71,10 @@ const Alert = useAlert()
                   </form>
                 )}
             </Formik>
-                      <Link to='/Signup'><p className='text-center pt-4'>Sign up instead?</p></Link>
-                      
+            <div className='d-flex justify-content-center pt-4'>
+            <Link to='/Resetpassword'><p className=''>Forgot password?</p></Link>
+            <Link to='/Signup'><p className=''>Sign up  for Twitter</p></Link>
+            </div>        
           </div>
           
         </div>

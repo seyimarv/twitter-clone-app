@@ -3,7 +3,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import Feed from '../../Components/Feed/Feed'
 import Database from '../../Firebase/Firebase'
 import Avatar from 'react-avatar';
-import { useFetch } from '../../Components/Utils/Utils'
+import { useFetch, useFetchPost } from '../../Components/Utils/Utils'
 import Widgets from '../../Components/Widgets/Widgets'
 import Phonefooter from '../../Components/Footer/Phonefooter'
 import Header from '../../Components/Header/Header'
@@ -23,7 +23,7 @@ const Homepage = (props) => {
       const handleClose = () => {
         setOpen(false);
       };
-      const posts = useFetch(Database.collection('posts'))
+      const posts = useFetchPost(Database.collection('posts'))
   
     
     console.log(props.location.pathname)

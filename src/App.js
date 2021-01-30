@@ -13,13 +13,14 @@ import Tweet from './Pages/Tweet/Tweet'
 import PostPage from './Pages/Post&Comment/Posts&comment'
 import SearchPage from './Pages/SearchPage/Searchpage'
 import Bookmarkpage from './Pages/BookmarkPage/BookmarkPage';
+import ResetPassword from './Pages/ResetPassword/ResetPassword';
 const App = () => {
    const {setUser, user} = useContext(UserContext)
 
    
    useEffect(() => {
          
-    const unsubscribeFromAuth= auth.onAuthStateChanged(async userAuth => {
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfile(userAuth);
        userRef.onSnapshot(snapShot => {
@@ -66,6 +67,13 @@ const App = () => {
                  <Redirect to='/home' />
               ) : (
                  <Login/>
+              )
+            } />
+             <Route exact path ='/Resetpassword'  render={() =>
+              user ? (
+                 <Redirect to='/home' />
+              ) : (
+                 <ResetPassword />
               )
             } />
              <ProtectedRoute exact path = '/home' component={Homepage} currentUser={user}  />

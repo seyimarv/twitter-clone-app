@@ -1,6 +1,5 @@
 import React from 'react'
-import Avatar from 'react-avatar';
-import { Button } from '@material-ui/core';
+import { Avatar, Button } from '@material-ui/core';
 import {Link} from 'react-router-dom'
 
 import './EachUser.scss'
@@ -11,8 +10,7 @@ const EachUser = ({user, name, userName}) => {
       <div className='pt-2'>
       
         <div className='eachUser'>
-        <Avatar name={user.name} size='40'
-         className='eachPostAvatar' round={true} color={Avatar.getRandomColor('sitebase', ['red'])} />
+       <Avatar src={user.profilePicture}/>
          <div className='eachUserName'>
            <h4>{name}</h4>
             <p>@{userName}</p>

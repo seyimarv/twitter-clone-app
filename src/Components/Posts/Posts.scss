@@ -1,151 +1,111 @@
 @import '../Breakpoints/abstracts/mixins';
+
 .posts {
     background-color: white;
-}
 
-.post {
-    display: flex;
-    border-bottom: 1px solid var(--twitter-background);
-    padding-bottom: 0px;
-  
-  
-    .postAvatar {
-        padding: 10px 15px;
-        width: 12%;
-
-        @include respond(phone) {
-            width: 22%;
-        }
-        .eachPostAvatar {
-            width: 45px !important;
-            height: 45px !important;
-            font-size: 40px !important;
-        }
-
-    }
-
-    .postBody {
-        width: fit-content;
-       padding: 10px 0px;
-     
-       width: 85%; 
  
-   
-
-       @include respond(phone) {
-           padding: 10px 0px;
-           width: 78%;
-       }
-       p {
-        margin-right: 20px;
-        overflow-wrap: break-word;
-        margin-bottom: 0px;
-        font-size: 14px;
-   
-    }
         
-        img {
-            border-radius: 20px;
-            width: 100%;
-        }
-     
-        .postHeader {
-            display: flex;
+@include respond(phone) {}
 
-            span {
-                .msvg {
-                   margin-left: 90px !important;
-                   color: rgb(173, 169, 169);
-                   
-                   &:hover {
-                       background-color: rgb(224, 224, 253);
-                       border-radius: 20px;
-                       border: 1px solid rgb(233, 233, 250)
-                   }
-                    
-                }
-            }
-        }
-        
-        .postHeaderText {
-            width: 80%;
+}
+.post {
+    border-bottom: 1px solid var(--twitter-background);
+    overflow: hidden;
 
-            a {
-                color: black;
-            
-        
-            
-            }
-
-          
-            @include respond (phone) {
-                max-width: 50%;
-            }
-          
-            h3 {
-                font-size: 14px;
-                margin-bottom: 2px;
-                overflow: hidden;
-                white-space: nowrap; 
-                text-overflow: ellipsis; 
-          
-              
-                @include respond (phone) {
-                    max-width: 120px;
-                }
-              
-            }
-           
-        }
-        .postHeaderSub {
-            font-weight: 800;
-            font-size: 12px;
-            color: grey
-        }
-        .postBadge {
-            font-size: 14px !important;
-            color: var(--twitter-color)
-        }
-        
-     
-    }
-    .linktoPostpage {
     a {
-        color: black;
-        text-decoration: none;
-
-    
+                color: black;
+                text-decoration: none;
     }
-}
-  
-   
-    .postFooter {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 0px;
-        width: 75%;
+    .postDropdown {
+        .msvg {
+           margin-left: 120px !important;
+           color: rgb(173, 169, 169) !important;
 
-        .retweeted {
-            color: green !important;
+           &:hover {
+               background-color: rgb(224, 224, 253);
+               border-radius: 20px;
+               border: 1px solid rgb(233, 233, 250)
+           }
+           @include respond (phone) {
+            margin-left: 70px !important;
         }
-       
-        .liked {
-          color: red;
 
-            .MuiSvgIcon-root {
-                fill: rgb(196, 26, 26) !important;
-            }
         }
-        @include respond (phone) {
-            width: 80%;
-        }
-    }
-  
-    @include respond(phone) {
       
-       
-        
     }
 }
 
+.postContents {
+    padding: 10px;
     
+
+
+}
+
+.postAvatar {
+    margin: 10px 0px;
+}
+
+h6 {
+    font-size: 14px;
+    margin-bottom: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+
+    @include respond (phone) {
+        max-width: 80%;
+    }
+    span {
+        font-weight: 800;
+        font-size: 12px;
+        color: grey
+    }
+}
+
+
+
+
+p {
+
+overflow-wrap: break-word;
+margin-bottom: 2px;
+font-size: 14px !important;
+width: 80%;
+
+@include respond (phone) {
+  width: 90%;  
+}
+
+}
+
+.postFooter {
+display: flex;
+justify-content: space-between;
+margin-top: 0px;
+width: 75%;
+padding-bottom: 10px;
+
+.retweeted {
+    color: green !important;
+}
+
+.liked {
+    color: red;
+
+    .MuiSvgIcon-root {
+        fill: rgb(196, 26, 26) !important;
+    }
+}
+
+@include respond (phone) {
+    width: 80%;
+}
+
+}
+
+
+
+
+

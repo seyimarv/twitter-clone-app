@@ -18,13 +18,13 @@ const Phonefooter = ({path}) => {
         <div className='phoneFooter'>
 
          <Link to='/home'><SidebarOption active={`${path === 'home' ? 'true' : 'false'}`}  Icon={HomeIcon} /></Link>
+         <Link to='/Explore'><SidebarOption Icon={SearchIcon}  active={`${path === 'Explore' ? 'true' : 'false'}`}/></Link>
          <Link to={{
                   pathname: 'Profile',
                   state: {
                       postUser: user
                   }
                 }} replace className='link'><SidebarOption Icon={PermIdentityIcon}  active={`${path === 'Profile' ? "true" : "false"}`} /></Link> 
-         <Link to='/Explore'><SidebarOption Icon={SearchIcon}  active={`${path === 'Explore' ? 'true' : 'false'}`}/></Link>
          <Link to='/Bookmark'> <SidebarOption Icon={BookmarkBorderIcon} active={`${path === 'Bookmark' ? 'true' : 'false'}`} /></Link>
         </div>
         

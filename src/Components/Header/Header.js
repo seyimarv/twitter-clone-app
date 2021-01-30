@@ -4,20 +4,24 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import {Link} from 'react-router-dom'
 import './Header.scss'
 import {auth} from '../../Firebase/Firebase'
+import { Avatar } from '@material-ui/core';
 
 
-const Header = ({presentPage, Avatar, path, user, history}) => {
+const Header = ({presentPage, path, user, history}) => {
     const {setUser} = useContext(UserContext)
     const LogoutUser =  () => {
        auth.signOut()
        setUser(null)
+       history.push('/')
 
     }
   return (
     <div className='header'>
      <div className='header-right'>
-    { path === 'home' ? <Avatar className='headerAvatar' name={user.name} size='25' round={true} 
-    color={Avatar.getRandomColor('sitebase', ['blue'])}  /> : 
+    { path === 'home' ? <Avatar src={user.profilePicture} style={{
+      height: '28px',
+      width: '28px'
+    }}/> : 
     <KeyboardBackspaceIcon className='backButton' onClick={() => 
     history.goBack()} /> 
       

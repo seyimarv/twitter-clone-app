@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import Database from '../../Firebase/Firebase'
-import { Button } from '@material-ui/core';
+import { Avatar, Button } from '@material-ui/core';
 import { useAlert } from "react-alert";
-import Avatar from 'react-avatar';
 
-const CommentBox = ({ commentUserId,  postId, onClose, commentUserName}) => {
+const CommentBox = ({commentUserPicture, commentUserId,  postId, onClose, commentUserName}) => {
   const Alert = useAlert()
     const [commentText, setCommentText] = useState('')
  
@@ -38,10 +37,12 @@ const CommentBox = ({ commentUserId,  postId, onClose, commentUserName}) => {
         <div className='tweetBox'>
           <form onSubmit={handleCommentSubmit}>
               <div className='tweetInput'>
-              <Avatar className='headerAvatar' name={commentUserName} size='35' 
-                  round={true}
-                   color={Avatar.getRandomColor('sitebase', ['red'])}  />
-               <input placeholder="tweet your reply" type='text' value={commentText} onChange={handleChange}/>
+               <Avatar src={commentUserPicture}/>
+               <input placeholder="tweet your reply" type='text' 
+               value={commentText} onChange={handleChange} style={{
+                 outline: 'none',
+                 border: '0px'
+               }}/>
               </div>
               {/* <input className='tweetInputImage' placeholder='Enter image URl' type='text'/> */}
 

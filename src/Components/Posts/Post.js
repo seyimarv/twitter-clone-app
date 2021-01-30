@@ -1,31 +1,29 @@
 import React, { useContext, useState, forwardRef } from 'react'
-import Avatar from 'react-avatar';
-import {Link} from 'react-router-dom'
+
+import { Link } from 'react-router-dom'
 import './Posts.scss'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
 import RepeatIcon from '@material-ui/icons/Repeat'
-import  FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import { handleLikeClick, handleRetweetClick } from "../Utils/Post.utils";
 import Comment from '../../Pages/Comment/Comment'
-import { Modal } from '@material-ui/core';
+import { Avatar, Modal } from '@material-ui/core';
 import { useGetUserData, useFetchPostCommments, useFetchLike, useFetchPostRetweets } from '../Utils/Utils'
 import Database from '../../Firebase/Firebase'
 import { UserContext } from '../../Context/UserContextProvider'
 import ClickAway from './PostDropdown'
-import { useAlert } from "react-alert";
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
-const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, path}, ref) => {
-  const {user} = useContext(UserContext)
+const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, path }, ref) => {
+  const { user } = useContext(UserContext)
   const currentUser = user
-  const Alert = useAlert();
+
   // fetching comments for each post
-const comments = useFetchPostCommments(Database.collection('comments'), id)
+  const comments = useFetchPostCommments(Database.collection('comments'), id)
+  const postUser = useGetUserData(postUserId)
 
- const postUser = useGetUserData(postUserId)
- 
 
-//  state for opening the comment modal
+  //  state for opening the comment modal
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -36,106 +34,78 @@ const comments = useFetchPostCommments(Database.collection('comments'), id)
     setOpen(false);
   };
 
-// state for liking a tweet
-const findLike= (like) => { 
-  return like.userId === currentUser.id;
-}
+  // state for liking a tweet
+  const findLike = (like) => {
+    return like.userId === currentUser.id;
+  }
 
-const likesState = useFetchLike(Database.collection('posts').doc(id).collection('likes'), findLike)
-const retweetState = useFetchPostRetweets(Database.collection('Retweets'), id, currentUser, findLike)
-const BookmarkState = useFetchPostRetweets(Database.collection('Bookmarks'), id
-, currentUser, findLike)
+  const findRetweet = (retweet) => {
+    return retweet.userId === currentUser.id && retweet.postId === id;
+  }
+
+  const likesState = useFetchLike(Database.collection('posts').doc(id).collection('likes'), findLike)
+  const retweetState = useFetchPostRetweets(Database.collection('Retweets'), 
+  id, currentUser, findRetweet)
+  const BookmarkState = useFetchPostRetweets(Database.collection('Bookmarks'), id
+    , currentUser, findLike)
 
 
 
-const {Retweets, EachRetweet} = retweetState
-const {EachLike, Likes} = likesState
-const [openDropdown, setOpenDropdown] = React.useState(false);
+  const { Retweets, EachRetweet } = retweetState
+  const { EachLike, Likes } = likesState
+  const [openDropdown, setOpenDropdown] = React.useState(false);
 
-const handleClick = () => {
-  setOpenDropdown((prev) => !prev);
-};
+  const handleClick = () => {
+    setOpenDropdown((prev) => !prev);
+  };
 
-const handleClickAway = () => {
-  setOpenDropdown(false);
-};
-
-const RetweetClick = async () => {
-  await 
-  handleRetweetClick(EachRetweet, id, currentUser)
-  Alert.success('Retweet successful!')
-
-}
+  const handleClickAway = () => {
+    setOpenDropdown(false);
+  };
 
 
   
 
- return (
-   
-      <div className='' ref={ref}>
 
+  return (
 
-     <div className='row post'>
-    
-        <div className="postAvatar">
-        <Avatar name={postUser.name} size='45' className='eachPostAvatar' round={true} 
-        color={Avatar.getRandomColor('sitebase', ['red'])} />
+    <div className='' ref={ref}>
+
+      <div className='d-flex post'>
+        <div className='postAvatar my-2'>
+          <Avatar src={postUser.profilePicture} style={{
+            height: '50px',
+            width: '50px'
+          }}/>
         </div>
-        <div className='postBody'>
-            <div className='postHeader'>
-              <div className='postHeaderText'>
-            {  location  ?
-            <div className='post-header-left-text'>
-            <h3>
-                  {postUser.name}
-                  <span className='postHeaderSub'>
-                  {/* { verification ? 
-                      <VerifiedUserIcon className='postBadge'/> : null
-                      } */}
-                      @{postUser.userName}
-                  </span>
-                </h3>
-                </div>
-                : 
-                <div>
-                <Link to={{
+        <div className='postContents w-100'>
+          <div className='row'>
+            <h6 className='col-6'>
+            <Link to={{
                   pathname: 'Profile',
                   state: {
                       postUser
                   }
-                }} replace><h3>
-                  {postUser.name}
-                  <span className='postHeaderSub'>
-                  {/* { verification ? 
-                      <VerifiedUserIcon className='postBadge'/> : null
-                      } */}
-                      @{postUser.userName}
-                  </span>
-                
-                  </h3></Link> 
-                  </div>
-                  }
-              </div>
-              <span>
+                }} replace>{postUser.name}
+              <span>@{postUser.userName}</span></Link>
+            </h6>
+            <div className="col-6 postDropdown">
               <div className='msvg'>
-               <MoreHorizIcon onClick={handleClick} />
-               </div>
-               <ClickAway handleClickAway={handleClickAway} 
-               openDropdown={openDropdown} 
-               postUserId={postUserId} 
-               text={text}
-               image={image}
-               postId={id}
-               currentUser={currentUser}
-               BookmarkState={BookmarkState}
-               path = {path}
-               />
-               </span>
-             
-               
+                <MoreHorizIcon onClick={handleClick} />
+              </div>
+              <ClickAway handleClickAway={handleClickAway}
+                openDropdown={openDropdown}
+                postUserId={postUserId}
+                text={text}
+                image={image}
+                postId={id}
+                currentUser={currentUser}
+                BookmarkState={BookmarkState}
+                path={path}
+              />
             </div>
-            <div className='linktoPostpage'>
-               <Link to={{
+          </div>
+          <Link to={{
                  pathname:`PostPage`,
                  state: {
                     postUser,
@@ -148,57 +118,74 @@ const RetweetClick = async () => {
                  }
                  }}
                  >
-                <p>{text}</p>
-               </Link>
+          <p className=''>{text}</p>
+          { image ?
+          <img src={image} style={{
+            borderRadius: '10px',
+            width: '100%',
+            height: '250px',
+            margin: '10px'
+          }}/> : null
+          }
+          </Link>
+          <div className='postFooter'>
+              <div>
+                <ChatBubbleOutlineIcon fontSize='small' onClick={handleOpen} />
+                {comments.length > 0 ?
+                  <span className='pl-1'>
+                    {comments.length}
+                  </span> : null
+                }
               </div>
-        
-          
-            <img src={image} alt=""/>  
-            <div className='postFooter'>
-            <div>
-            <ChatBubbleOutlineIcon fontSize='small' onClick={handleOpen}/>
-            { comments.length > 0 ? 
-              <span className='pl-1'>
-              {comments.length}
-            </span> : null
-            }
-            </div>
-            <Modal
+              <Modal
                 open={open}
                 onClose={handleClose}
               >
-                <Comment userName={postUser.userName} text={text} name={postUser.name} image={image}
-                userId={userId} postId={id}
-              onClose={handleClose} location={location}/> 
-           </Modal>
-           <div className={` ${EachRetweet ? 'retweeted' : ''}`}>
-            <RepeatIcon fontSize='small' onClick={() => 
-            RetweetClick()}
-                   
-                 />
-            { Retweets.length > 0 ? 
-              <span className='pl-1'>
-              {Retweets.length}
-            </span> : null
-            }
+                <Comment userName={postUser.userName}
+                  text={text} name={postUser.name}
+                  image={image}
+                  userId={userId} postId={id}
+                  onClose={handleClose} location={location} />
+              </Modal>
+              <div className={` ${EachRetweet ? 'retweeted' : ''}`}>
+                <RepeatIcon fontSize='small'
+                  onClick={() =>
+                    handleRetweetClick(EachRetweet, id, currentUser)
+                  }
+
+                />
+                {Retweets.length > 0 ?
+                  <span className='pl-1'>
+                    {Retweets.length}
+                  </span> : null
+                }
+              </div>
+              <div className={` ${EachLike ? 'liked' : ''}`}>
+                <FavoriteBorderIcon fontSize='small' onClick={() =>
+                  handleLikeClick(EachLike, id, currentUser)} />
+                {Likes.length > 0 ?
+                  <span className='pl-1'>
+                    {Likes.length}
+                  </span> : null
+                }
+
+              </div>
             </div>
-            <div className={` ${EachLike ? 'liked' : ''}`}>
-            <FavoriteBorderIcon fontSize='small'   onClick={() => handleLikeClick(EachLike, id, currentUser)}/>
-            { Likes.length > 0 ?
-              <span className='pl-1'>
-              {Likes.length}
-            </span> : null
-            }
-            
-            </div>
-            </div>
+
         </div>
-     
       </div>
-     
-      
-      </div>
-    )
+
+
+
+    </div>
+  )
 }
 )
 export default EachPost
+
+
+
+
+
+
+          

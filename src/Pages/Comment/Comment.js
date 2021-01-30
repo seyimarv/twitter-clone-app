@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import ClearIcon from '@material-ui/icons/Clear';
 import CommentBox from '../../Components/Comment/CommentBox';
-import {Link} from 'react-router-dom'
-import Avatar from 'react-avatar';
+
 import './Comment.scss'
 import {UserContext} from '../../Context/UserContextProvider'
+import { Avatar } from '@material-ui/core';
 
 const Comment = ({userName, text, name, image, userId, postId,onClose}) => {
     const {user} = useContext(UserContext)
@@ -18,9 +18,7 @@ const Comment = ({userName, text, name, image, userId, postId,onClose}) => {
           </div>
           <div className='row py-3 comment-post'>
           <div className='col-1 post-avatar'>
-          <Avatar className='headerAvatar' name={name} size='35' 
-                  round={true}
-                   color={Avatar.getRandomColor('sitebase', ['red'])}  />
+          <Avatar src={user.profilePicture} />
           </div>
           <div className='col-10 ml-1 post-body'>
                 <div className='post-header-text'>
@@ -31,17 +29,15 @@ const Comment = ({userName, text, name, image, userId, postId,onClose}) => {
                        @{userName}
                    </span>
                 </div>
-              <div className='post-contents'>
+              <div className='post-contents w-100 '>
                  <p>{text}</p>
                  <h6 className='post-reply'>Replying to 
-                 <Link to={`Profile/:${userId}`}><span>
-                      @{userName}
-                  </span></Link>
+                  {name}
                  </h6>
               </div>
           </div>
           </div>
-           <CommentBox  commentUserId={currentUser.id} commentUserName={currentUser.name}
+           <CommentBox commentUserPicture = {currentUser.profilePicture} commentUserId={currentUser.id} commentUserName={currentUser.name}
           name={name} postId={postId} image={image} onClose={onClose} />
         </div>
         </div>

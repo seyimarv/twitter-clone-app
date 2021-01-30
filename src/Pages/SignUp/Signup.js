@@ -141,13 +141,4 @@ const Signup = () => {
 export default Signup
 
 
-{/* <form>
-//          <FormInput label='name' type='text'/>
-//          <FormInput label='email' type='text'/>
 
-//          <p>marvie twitter clone</p>
-
-//          <h3>Date of Birth</h3>
-//          <FormInput  type='date' label='Date of birth'/>
-//        
-//      </form> */}

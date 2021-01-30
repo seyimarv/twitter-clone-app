@@ -2,13 +2,15 @@ import React from 'react';
 import EachPost from './Post'
 import './Posts.scss'
 import FlipMove from "react-flip-move";
+import { Switch, Route, Redirect} from 'react-router-dom';
 const Post = ({currentUser, posts}) => {
 
 
   const sortPosts = (a, b) => a - b;
 
 
-  if(posts.length > 0){  return (
+   return (
+     
       <div>
     { 
 
@@ -26,9 +28,7 @@ const Post = ({currentUser, posts}) => {
         }
         </div>
     )
-} else {
-  return null
 }
-}
+
 
 export default Post

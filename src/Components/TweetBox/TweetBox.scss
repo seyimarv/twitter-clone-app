@@ -1,6 +1,17 @@
+
+
 .tweetBox {
     padding-bottom: 10px;
-    padding-right: 10px;
+ 
+
+
+    .MuiLinearProgress-colorPrimary {
+        background-color: var(--twitter-background);
+        
+    }
+    .MuiLinearProgress-barColorPrimary {
+        background-color:  rgba(29,161,242,0.8)
+    }
 
     form {
         display: flex;
@@ -9,19 +20,20 @@
     }
     .tweetInput {
         padding: 20px;
+        padding-bottom: 0px;
         display: flex;
         width: 100% ;
 
        
 
-        input {
-            margin-left: 20px;
+        .text-input {
+            margin-left: 5px;
             font-size: 20px;
             box-sizing: border-box;
             overflow-wrap: break-word;
             border: none !important;
             display: block !important;
-       
+            margin-bottom: 40px;
             width: 100%;
       
             
@@ -54,9 +66,7 @@
         color: white !important;
         font-weight: 900 !important;
         text-transform: inherit !important;
-        height: 40px !important;
         width: 80px;
-        margin-top: 20px !important;
         border-radius: 30px !important;
         margin-left: auto !important;
 
@@ -64,5 +74,47 @@
             outline: none !important;
         }
     }
+    input {
+         
+        &:focus {
+            outline: none !important;
+            border: none !important;
+        }
+    }
     
 }
+.file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .file-input::before {
+  
+    content: '';
+    display: inline-block;
+    background: url('../../Assets/image.svg');
+    height: 20px;
+    background-repeat: no-repeat;
+    background-color:rgba(201, 200, 248, 0.3);
+    width: 20px;
+    border: 1px solid rgba(201, 200, 248, 0.9);
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 100pt;
+    margin: 0px 60px;
+  }
+  .file-input:hover::before {
+    border-color: black;
+  }
+   
+ 
+  input[type='file'] {
+    color: transparent;
+  }
+  .file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }

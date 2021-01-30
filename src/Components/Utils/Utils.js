@@ -128,33 +128,59 @@ export const useFetchPostCommments = (url, Id) => {
    
 }
 
-export const useFetchPostRetweets = (url, Id, currentUser, findLike) => {
+export const useFetchPostRetweets = (url, Id, currentUser, findRetweet) => {
   const [postRetweets, setPostRetweets] = useState({
     Retweets: [],
     EachRetweet: null
   })
   useEffect (() => {
-    const fetchFunc = async () => {
           const Retweets = url
-          await Retweets.onSnapshot(result => {
+           Retweets.onSnapshot(result => {
             const fetchedRetweets = []
             result.forEach(doc => {
               const fetchedRetweet = {
                 id: doc.id,
                 ...doc.data()
                 }; fetchedRetweets.push(fetchedRetweet)
-                setPostRetweets({
-                  EachRetweet: fetchedRetweets.find(retweet => retweet.userId === currentUser.id && retweet.postId === Id)
-                  ,
-                  Retweets: fetchedRetweets.filter(retweet => retweet.postId === Id)
-                })
+            })
+            setPostRetweets({
+              Retweets: fetchedRetweets.filter(retweet => retweet.postId === Id),
+              EachRetweet: fetchedRetweets.find(findRetweet)
             })
        
              
           })
-    }
-    fetchFunc()
+  
+    
+  }, [setPostRetweets])
+  return postRetweets;
+}
+ 
 
+
+
+export const useFetchPost = (url) => {
+  const [posts, setPosts] = useState([])
+
+
+  useEffect(() => {
+  const fetchPostData= async() => {
+      const url = Database.collection('posts')
+      await url
+      url.orderBy('timestamp', 'desc').onSnapshot(snapShot => {
+        const fetchedPosts = []
+        snapShot.forEach(doc => {
+          const fetchedPost = {
+            id: doc.id,
+            ...doc.data()
+          }
+          fetchedPosts.push(fetchedPost)
+        })
+        setPosts(fetchedPosts)
+      })
+    }
+    fetchPostData()
   }, [])
-   return postRetweets;
+  
+   return posts
 }

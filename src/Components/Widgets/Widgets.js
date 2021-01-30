@@ -6,12 +6,11 @@ const Widgets = () => {
     return (
         <div className='widgets position-sticky'>
            <div className='widgetsContainer'>
-             <h2>What's happening</h2>
-
+             <h6 className='my-3'>  My Twitter page</h6>
              <div className='widgetsSectiontwo'>
              <TwitterTimelineEmbed sourceType="profile"
                  screenName="femsey11"
-                 options={{height: 500}}
+                 options={{height: 600}}
              />
              </div>
            </div>

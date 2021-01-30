@@ -25,10 +25,13 @@ const SignInAndSignUp = () => {
           <Link to='/Login'><Button variant='outlined' className='SignButton LoginButton' fullWidth>Login</Button></Link> 
            </div>
 
-         
+           
 
          </div>
-
+           <div className='text-center my-4'>
+             <h3>Made by seyimarv</h3>
+             <p>2020</p>
+           </div>
         </div>
     )
 }

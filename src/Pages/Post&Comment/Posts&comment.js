@@ -13,17 +13,26 @@ const PostPage = (props) => {
   const {user} = useContext(UserContext)
   const currentUser = user
   console.log(props.location.state)
-  const {name, userName, id}  = props.location.state.postUser
+  const {name, userName, id, profilePicture}  = props.location.state.postUser
   const { text, postId, image} =  props.location.state
   console.log(postId)
   const findLike= (like) => { 
     return like.userId === currentUser.id;
   }
+
+  const findRetweet = (retweet) => {
+    return retweet.userId === currentUser.id && retweet.postId === postId;
+  }
+  const retweetState = useFetchPostRetweets(Database.collection('Retweets'), 
+  postId, currentUser, findRetweet)
+  console.log(retweetState)
+
+  const {Retweets, EachRetweet} = retweetState
    const likesState = useFetchLike(Database.collection('posts').doc(postId).collection('likes'), findLike)
    console.log(likesState)
    const {Likes, EachLike} = likesState
- const retweetState = useFetchPostRetweets(Database.collection('Retweets'), postId, currentUser, findLike)
-const {Retweets, EachRetweet} = retweetState
+
+
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -55,13 +64,15 @@ const {Retweets, EachRetweet} = retweetState
           <div className='col-lg-5 col-xs-12 col-sm-8 px-0 col-md-8 homeField'>
           <Header presentPage='Tweet' path='tweet' className='' history={props.history}/>
           <EachPostPage name={name} comments={comments} 
+          profilePicture={profilePicture}
           userName={userName}
           Likes={Likes}
-          Retweets={Retweets}
           EachRetweet={EachRetweet}
+          Retweets={Retweets}
           EachLike={EachLike}
           text={text} image={image} postId={postId}
             postUserId={id}
+         
           />
               
           </div>
