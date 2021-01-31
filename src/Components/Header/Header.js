@@ -18,10 +18,15 @@ const Header = ({presentPage, path, user, history}) => {
   return (
     <div className='header'>
      <div className='header-right'>
-    { path === 'home' ? <Avatar src={user.profilePicture} style={{
+    { path === 'home' ?         <Link to={{
+                  pathname: 'Profile',
+                  state: {
+                      postUser: user
+                  }
+                }} replace><Avatar src={user.profilePicture} style={{
       height: '28px',
       width: '28px'
-    }}/> : 
+    }}/></Link> : 
     <KeyboardBackspaceIcon className='backButton' onClick={() => 
     history.goBack()} /> 
       

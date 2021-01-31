@@ -16,13 +16,14 @@ import Database from '../../Firebase/Firebase'
     }
   }
 
-export const handleRetweetClick = (EachRetweet,id, currentUser) => {
+export const handleRetweetClick = (EachRetweet,id, currentUser, alert) => {
 
     if(!EachRetweet) {
         Database.collection('Retweets').add({
         postId: id,
         userId: currentUser.id
         })
+        alert.success('retweet successful!')
     } else {
       Database.collection('Retweets').doc(EachRetweet.id).delete()
      

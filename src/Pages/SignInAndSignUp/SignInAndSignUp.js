@@ -2,7 +2,9 @@ import React from 'react'
 import './SignInAndSignUp.scss'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import { Button } from '@material-ui/core';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import CopyrightIcon from '@material-ui/icons/Copyright';
 
 const SignInAndSignUp = () => {
 
@@ -29,8 +31,11 @@ const SignInAndSignUp = () => {
 
          </div>
            <div className='text-center my-4'>
-             <h3>Made by seyimarv</h3>
-             <p>2020</p>
+             <h5>Built with <FavoriteIcon />
+             <Link to={{ pathname: "https://twitter.com/Femsey11" }} target="_blank" > oyewo oluwaseyitan </Link>
+              </h5>
+             <p className=''><CopyrightIcon />
+             2020</p>
            </div>
         </div>
     )

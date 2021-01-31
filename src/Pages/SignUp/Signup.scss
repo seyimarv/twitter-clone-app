@@ -19,9 +19,11 @@
   
     .signupHeader {
         display: flex;
-
-        .signupTwitterIcon {
+        .link_to_home {
             flex: 0.95;
+        }
+        .signupTwitterIcon {
+        
             margin-left: 40px;
 
             @include respond(phone)  {

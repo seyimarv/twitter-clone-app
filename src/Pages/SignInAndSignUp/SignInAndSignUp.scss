@@ -6,14 +6,11 @@
     background-position: left;
     background-repeat: no-repeat;
     background-size: 1000px;
-    
-        h3 {
-           
+        h3 { 
             color: white;
             font-weight: 800;
             font-size: 20px;
             margin: 50px 0px;
-
         }
     
         @include respond(phone)  {
@@ -40,9 +37,13 @@
         margin-top: 50px;
     }
     @include respond(phone)  {
-        padding: 5px 20px;
+        padding: 18px 20px;
     }
+   
+    h5 {
+        font-size: 12px;
 
+    }
    
 }
 .SignButton {
@@ -53,8 +54,6 @@
     height: 40px !important;
     margin-top: 20px !important;
     border-radius: 30px !important;
-      
-
     &:focus {
         outline: none;
     }

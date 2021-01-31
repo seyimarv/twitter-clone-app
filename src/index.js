@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import { UserContextProvider } from './Context/UserContextProvider';
 
 const options = {
-  timeout: 5000,
+  timeout: 2000,
   position: positions.TOP_CENTER,
 
 

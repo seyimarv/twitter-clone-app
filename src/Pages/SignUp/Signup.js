@@ -5,6 +5,7 @@ import {auth, createUserProfile} from '../../Firebase/Firebase'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import { Button } from '@material-ui/core';
 import { Formik } from 'formik';
+import {Link} from 'react-router-dom'
 import { useAlert } from "react-alert";
 import * as Yup from 'yup';
 
@@ -27,7 +28,7 @@ const Signup = () => {
           <div className='SignupContents'>
           
           <div className='text-center signupHeader'>
-           <TwitterIcon className='signupTwitterIcon' />
+          <Link to='/' className='link_to_home'><TwitterIcon className='signupTwitterIcon' /></Link>
           { formState1 ?
               <Button variant='outlined' className='SignupButton SignButton'
             type='submit' onClick={setFormToSecond} fullWidth>next</Button> :
@@ -131,6 +132,9 @@ const Signup = () => {
                 </form>
                 )}
             </Formik>
+            <div className=''>
+            <Link to='/Login'><h6 className='text-center'>Login instead?</h6></Link>
+            </div>   
     
           </div>
          </div>

@@ -16,7 +16,7 @@ const Alert = useAlert()
         <div className='container-fluid mx-auto'>
           <div className='loginPage pt-3'>
            <div className='text-center'>
-          <TwitterIcon className='signupTwitterIcon'/>
+         <Link to='/' ><TwitterIcon className='signupTwitterIcon'/></Link>
           <h1>Log in to Twitter</h1>
           </div>
           <Formik

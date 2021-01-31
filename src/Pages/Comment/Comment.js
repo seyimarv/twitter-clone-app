@@ -6,7 +6,7 @@ import './Comment.scss'
 import {UserContext} from '../../Context/UserContextProvider'
 import { Avatar } from '@material-ui/core';
 
-const Comment = ({userName, text, name, image, userId, postId,onClose}) => {
+const Comment = ({userName, text, name, image, userId, postId,onClose, profilePicture}) => {
     const {user} = useContext(UserContext)
     console.log(user)
     const currentUser = user
@@ -18,7 +18,7 @@ const Comment = ({userName, text, name, image, userId, postId,onClose}) => {
           </div>
           <div className='row py-3 comment-post'>
           <div className='col-1 post-avatar'>
-          <Avatar src={user.profilePicture} />
+          <Avatar src={profilePicture} />
           </div>
           <div className='col-10 ml-1 post-body'>
                 <div className='post-header-text'>

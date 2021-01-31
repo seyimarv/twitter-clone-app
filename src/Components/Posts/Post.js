@@ -1,5 +1,5 @@
 import React, { useContext, useState, forwardRef } from 'react'
-
+import { useAlert } from "react-alert";
 import { Link } from 'react-router-dom'
 import './Posts.scss'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
@@ -17,7 +17,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, path }, ref) => {
   const { user } = useContext(UserContext)
   const currentUser = user
-
+  const Alert = useAlert()
   // fetching comments for each post
   const comments = useFetchPostCommments(Database.collection('comments'), id)
   const postUser = useGetUserData(postUserId)
@@ -73,10 +73,15 @@ const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, pa
 
       <div className='d-flex post'>
         <div className='postAvatar my-2'>
-          <Avatar src={postUser.profilePicture} style={{
+        <Link to={{
+                  pathname: 'Profile',
+                  state: {
+                      postUser
+                  }
+                }} replace>  <Avatar src={postUser.profilePicture} style={{
             height: '50px',
             width: '50px'
-          }}/>
+          }}/> </Link>
         </div>
         <div className='postContents w-100'>
           <div className='row'>
@@ -119,14 +124,22 @@ const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, pa
                  }}
                  >
           <p className=''>{text}</p>
+        
+          
           { image ?
+          <div style={{
+          
+          }}>
           <img src={image} style={{
-            borderRadius: '10px',
-            width: '100%',
-            height: '250px',
-            margin: '10px'
-          }}/> : null
+              height: '200px'
+          }} className=' post_image' style={{
+       
+          }}/>
+        
+        </div> 
+           : null
           }
+   
           </Link>
           <div className='postFooter'>
               <div>
@@ -142,7 +155,7 @@ const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, pa
                 onClose={handleClose}
               >
                 <Comment userName={postUser.userName}
-                  text={text} name={postUser.name}
+                  text={text} name={postUser.name} profilePicture={postUser.profilePicture}
                   image={image}
                   userId={userId} postId={id}
                   onClose={handleClose} location={location} />
@@ -150,7 +163,7 @@ const EachPost = forwardRef(({ postUserId, text, image, userId, id, location, pa
               <div className={` ${EachRetweet ? 'retweeted' : ''}`}>
                 <RepeatIcon fontSize='small'
                   onClick={() =>
-                    handleRetweetClick(EachRetweet, id, currentUser)
+                    handleRetweetClick(EachRetweet, id, currentUser, Alert)
                   }
 
                 />
